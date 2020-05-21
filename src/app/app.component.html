@@ -1,5 +1,8 @@
-<app-header [title]="title" (onTitleClick)="getData($event)"></app-header>
-<app-sidenav>
+<app-header
+  [title]="title"
+  [drawer]="drawer"
+  (onTitleClick)="getData($event)"></app-header>
+<app-sidenav (setSidenavControl)="setSidenav($event)">
   <ng-template #customContent>
     <span>content</span>
   </ng-template>

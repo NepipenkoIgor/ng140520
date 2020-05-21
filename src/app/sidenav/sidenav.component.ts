@@ -1,33 +1,24 @@
 import {
-  AfterContentInit,
-  AfterViewInit,
-  Component,
-  ContentChild,
-  TemplateRef,
+  Component, EventEmitter, OnInit, Output,
   ViewChild,
-  ViewContainerRef
 } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css']
 })
-export class SidenavComponent implements AfterContentInit, AfterViewInit {
+export class SidenavComponent implements OnInit {
 
-  @ContentChild('customContent', {read: TemplateRef})
-  public contentBlock!: TemplateRef<HTMLElement>;
+  @Output()
+  public setSidenavControl: EventEmitter<MatDrawer> = new EventEmitter<MatDrawer>(true);
 
-  @ViewChild('contentPlace', {read: ViewContainerRef})
-  public contentPlace!: ViewContainerRef;
+  @ViewChild(MatDrawer, {static: true})
+  public drawer!: MatDrawer;
 
-  ngAfterViewInit(): void {
-    console.log(this.contentPlace);
-    this.contentPlace.createEmbeddedView(this.contentBlock);
-  }
-
-  ngAfterContentInit(): void {
-    console.log(this.contentBlock);
+  ngOnInit(): void {
+    this.setSidenavControl.emit(this.drawer);
   }
 
 }

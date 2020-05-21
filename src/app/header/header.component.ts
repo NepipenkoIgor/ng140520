@@ -1,25 +1,23 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   @Input()
   public title = '';
 
+  @Input()
+  public drawer!: MatDrawer;
+
   @Output()
   onTitleClick: EventEmitter<string> = new EventEmitter<any>();
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
-
-  public sendData() {
-    this.onTitleClick.emit('Click on title')
+  public toggleDrawer() {
+    this.drawer.toggle();
   }
 }

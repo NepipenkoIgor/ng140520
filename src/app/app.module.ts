@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 // NgModule/Directives/Pipe/Service
 // NgModule ---- es6 modules
 // declarations ----- let/const
@@ -22,7 +24,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
