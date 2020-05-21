@@ -1,7 +1,8 @@
 <app-header [title]="title" (onTitleClick)="getData($event)"></app-header>
 <app-sidenav>
-  <div class="menu">
-    menu item
-  </div>
-  <span>content</span>
+  <ng-template #customContent>
+    <span>content</span>
+  </ng-template>
 </app-sidenav>
+
+
