@@ -1,3 +1,6 @@
+import { of } from 'rxjs';
+import { delay } from 'rxjs/operators';
+
 export interface IProduct {
   '_id': string;
   'title': string;
@@ -81,3 +84,7 @@ export const products: IProduct[] = [
     'isFavorite': true
   }
 ];
+
+
+export const products$ = of(products)
+  .pipe(delay(5000));
