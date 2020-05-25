@@ -15,3 +15,8 @@ p {
   margin: auto;
   top: 40%;
 }
+
+mat-form-field {
+  width: 100%;
+}
+

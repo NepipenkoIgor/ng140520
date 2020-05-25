@@ -87,4 +87,4 @@ export const products: IProduct[] = [
 
 
 export const products$ = of(products)
-  .pipe(delay(5000));
+  .pipe(delay(1000));
