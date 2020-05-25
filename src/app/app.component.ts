@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
+import { IProduct, products } from './data';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +11,12 @@ export class AppComponent {
   public title = 'ng140520';
   public title1 = 'ng140520';
   public drawer!: MatDrawer;
+  public products: IProduct[] = [];
 
-  constructor() {
+  constructor(
+  ) {
     setTimeout(() => {
-      console.log('some change');
-      this.title = 'NEW TITLE';
-      setTimeout(() => {
-        this.title1 = 'NEW TITLE';
-      });
+      this.products = products;
     }, 10000);
   }
 
