@@ -3,6 +3,7 @@ import {
   Input,
 } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
+import { IRate } from './exchange-rate/exchange-rate.component';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +20,12 @@ export class HeaderComponent {
 
   @Input()
   public drawer!: MatDrawer;
+
+  public rates: IRate[] = [
+    {value: 100, currency: 'RUB'},
+    {value: 40, currency: 'USD'},
+    {value: 70, currency: 'EUR'},
+  ]
 
   public toggleDrawer() {
     this.drawer.toggle();
