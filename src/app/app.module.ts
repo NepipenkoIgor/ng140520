@@ -10,6 +10,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductsFilterPipe } from './products-filter.pipe';
 import { ExchangeRateComponent } from './header/exchange-rate/exchange-rate.component';
 import { ExchangeRateDirective } from './header/exchange-rate/exchange-rate.directive';
+import { HiddenDirective } from './header/exchange-rate/hidden.directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ExchangeRateDirective } from './header/exchange-rate/exchange-rate.dire
     ProductCardComponent,
     ProductsFilterPipe,
     ExchangeRateComponent,
-    ExchangeRateDirective
+    ExchangeRateDirective,
+    HiddenDirective
   ],
   imports: [
     BrowserModule,

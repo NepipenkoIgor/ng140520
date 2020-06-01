@@ -1,9 +1,13 @@
-<div *appExchangeRate="let rate from rates autoplay mode duration 3000; let ctrl = controller">
-  <button mat-button (click)="ctrl.prev()">
+<div
+  *appExchangeRate="let rate from rates autoplay mode duration 3000; let ctrl = controller"
+  (mouseenter)="cPrev.show();cNext.show()"
+  (mouseleave)="cPrev.hide();cNext.hide()"
+>
+  <button mat-button (click)="ctrl.prev()" appHidden #cPrev="hd">
     <mat-icon>keyboard_arrow_left</mat-icon>
   </button>
   <span>{{rate.value | currency: rate.currency: 'symbol-narrow'}}</span>
-  <button mat-button (click)="ctrl.next()">
+  <button mat-button (click)="ctrl.next()" appHidden #cNext="hd">
     <mat-icon>keyboard_arrow_right</mat-icon>
   </button>
 </div>
