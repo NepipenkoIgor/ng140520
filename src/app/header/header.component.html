@@ -2,7 +2,7 @@
   <button mat-button (click)="toggleDrawer()">
     <mat-icon>view_headline</mat-icon>
   </button>
-  <h3>{{title}}</h3>
+  <div [innerHTML]="titleContent"></div>
   <app-exchange-rate [rates]="rates">
   </app-exchange-rate>
 </mat-toolbar>

@@ -4,6 +4,8 @@ import {
 } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { IRate } from './exchange-rate/exchange-rate.component';
+import { DomSanitizer } from '@angular/platform-browser';
+// import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-header',
@@ -20,6 +22,13 @@ export class HeaderComponent {
 
   @Input()
   public drawer!: MatDrawer;
+
+  public titleContent = this.domSanitizer.bypassSecurityTrustHtml('<h3 style="color: orange">NgCourse</h3>');
+
+  constructor(
+     private domSanitizer: DomSanitizer
+  ) {
+  }
 
   public rates: IRate[] = [
     {value: 100, currency: 'RUB'},
