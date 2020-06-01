@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
-import { IProduct, products$ } from './data';
+import { IProduct } from './data';
 import { Observable } from 'rxjs';
 import { MatCheckboxChange } from '@angular/material/checkbox/checkbox';
+import { ProductsService } from './products.service';
 
 // ReactiveX = Observer + Iterator
 @Component({
@@ -16,9 +17,15 @@ export class AppComponent implements OnInit {
   public drawer!: MatDrawer;
   public searchText = '';
   public onlyFavorites = false;
-  public products$: Observable<IProduct[]> = products$;
+  public products$!: Observable<IProduct[]>;
+
+  public constructor(
+    private productsService: ProductsService
+  ) {
+  }
 
   public ngOnInit(): void {
+    this.products$ = this.productsService.getProducts();
   }
 
   public setSidenav(drawer: MatDrawer) {

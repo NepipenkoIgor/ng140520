@@ -11,6 +11,7 @@ import { ProductsFilterPipe } from './products-filter.pipe';
 import { ExchangeRateComponent } from './header/exchange-rate/exchange-rate.component';
 import { ExchangeRateDirective } from './header/exchange-rate/exchange-rate.directive';
 import { HiddenDirective } from './header/exchange-rate/hidden.directive';
+import { ProductsService } from './products.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import { HiddenDirective } from './header/exchange-rate/hidden.directive';
     BrowserAnimationsModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+    ProductsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -35,7 +35,7 @@ export class ExchangeRateDirective implements OnInit {
 
   constructor(
     private tmp: TemplateRef<any>,
-    private vcr: ViewContainerRef
+    private vcr: ViewContainerRef,
   ) {
   }
 
