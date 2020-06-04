@@ -4,12 +4,14 @@ import { IProduct } from './data';
 import { Observable } from 'rxjs';
 import { MatCheckboxChange } from '@angular/material/checkbox/checkbox';
 import { ProductsService } from './products.service';
-
 // ReactiveX = Observer + Iterator
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  providers: [
+    ProductsService
+  ],
 })
 export class AppComponent implements OnInit {
   public title = 'ng140520';
@@ -20,7 +22,7 @@ export class AppComponent implements OnInit {
   public products$!: Observable<IProduct[]>;
 
   public constructor(
-    private productsService: ProductsService
+   private productsService: ProductsService
   ) {
   }
 

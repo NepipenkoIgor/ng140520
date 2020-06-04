@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { IProduct, products$ } from './data';
+import { IProduct } from './data';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
@@ -10,6 +10,7 @@ export class ProductsService {
   constructor(
     private http: HttpClient
   ) {
+    console.log('Init !!!!!!!');
   }
 
   public getProducts(): Observable<IProduct[]> {

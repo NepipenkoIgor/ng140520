@@ -5,6 +5,8 @@ import {
 import { MatDrawer } from '@angular/material/sidenav';
 import { IRate } from './exchange-rate/exchange-rate.component';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ExampleService } from '../example.service';
+
 // import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -26,15 +28,17 @@ export class HeaderComponent {
   public titleContent = this.domSanitizer.bypassSecurityTrustHtml('<h3 style="color: orange">NgCourse</h3>');
 
   constructor(
-     private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    private exampleService: ExampleService,
   ) {
+    console.log('header', this.exampleService.getTimeStamp());
   }
 
   public rates: IRate[] = [
     {value: 100, currency: 'RUB'},
     {value: 40, currency: 'USD'},
     {value: 70, currency: 'EUR'},
-  ]
+  ];
 
   public toggleDrawer() {
     this.drawer.toggle();
