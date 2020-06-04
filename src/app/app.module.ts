@@ -11,7 +11,10 @@ import { ProductsFilterPipe } from './products-filter.pipe';
 import { ExchangeRateComponent } from './header/exchange-rate/exchange-rate.component';
 import { ExchangeRateDirective } from './header/exchange-rate/exchange-rate.directive';
 import { HiddenDirective } from './header/exchange-rate/hidden.directive';
-import { ExampleService } from './example.service';
+import { environment } from '../environments/environment';
+import { BASE_URL } from './config';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CustomInterceptorService } from './custom-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -29,8 +32,24 @@ import { ExampleService } from './example.service';
     BrowserAnimationsModule,
     SharedModule
   ],
-  bootstrap: [AppComponent],
-  providers: [ExampleService]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CustomInterceptorService,
+      multi: true
+    },
+    {
+      provide: BASE_URL,
+      useValue: environment.baseUrl,
+    },
+    {
+      provide: 'baseUrl',
+      useValue: 'localhost:3333',
+    }
+  ],
+  bootstrap: [
+    AppComponent
+  ],
 })
 export class AppModule {
 }

@@ -5,7 +5,6 @@ import {
 import { MatDrawer } from '@angular/material/sidenav';
 import { IRate } from './exchange-rate/exchange-rate.component';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ExampleService } from '../example.service';
 
 // import { DomSanitizer } from '@angular/platform-browser';
 
@@ -29,9 +28,7 @@ export class HeaderComponent {
 
   constructor(
     private domSanitizer: DomSanitizer,
-    private exampleService: ExampleService,
   ) {
-    console.log('header', this.exampleService.getTimeStamp());
   }
 
   public rates: IRate[] = [
