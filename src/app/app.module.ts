@@ -15,6 +15,8 @@ import { environment } from '../environments/environment';
 import { BASE_URL } from './config';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CustomInterceptorService } from './custom-interceptor.service';
+import { ModalModule } from './modal/modal.module';
+import { ProductConfirmComponent } from './product-card/product-confirm/product-confirm.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +27,14 @@ import { CustomInterceptorService } from './custom-interceptor.service';
     ProductsFilterPipe,
     ExchangeRateComponent,
     ExchangeRateDirective,
-    HiddenDirective
+    HiddenDirective,
+    ProductConfirmComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    ModalModule
   ],
   providers: [
     {
