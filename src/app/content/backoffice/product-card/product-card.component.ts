@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { IProduct } from '../data';
-import { ModalService } from '../modal/modal.service';
-import { ProductConfirmComponent } from './product-confirm/product-confirm.component';
+import { ModalService } from '../../../modal/modal.service';
+import { IProduct } from '../../../custom-interceptor.service';
+
 
 @Component({
   selector: 'app-product-card',
@@ -23,9 +23,12 @@ export class ProductCardComponent {
 
   }
 
-  public addToCart() {
+  public async addToCart() {
+    console.time('LOAD')
+    const component = await import ('./product-confirm/product-confirm.component');
+    console.timeEnd('LOAD')
     this.modalService.open({
-      component: ProductConfirmComponent,
+      component: component.ProductConfirmComponent,
       context: {
         product: {...this.product},
         save: () => {

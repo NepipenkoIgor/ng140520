@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IProduct } from './data';
+import { IProduct } from '../../custom-interceptor.service';
 
 @Pipe({
   name: 'productsFilter',

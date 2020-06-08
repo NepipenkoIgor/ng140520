@@ -4,6 +4,15 @@ import { Observable } from 'rxjs';
 import { BASE_URL } from './config';
 import { filter, map } from 'rxjs/operators';
 
+export interface IProduct {
+  '_id': string;
+  'title': string;
+  'img': string;
+  'price': number;
+  'author': string;
+  'isFavorite': boolean;
+};
+
 @Injectable()
 export class CustomInterceptorService implements HttpInterceptor {
 
