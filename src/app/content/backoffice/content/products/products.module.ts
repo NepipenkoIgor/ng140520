@@ -5,16 +5,19 @@ import { SharedModule } from '../../../../shared/shared.module';
 import { ProductsRouterModule } from './products-router.module';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductsFilterPipe } from './products-filter.pipe';
+import { OneProductComponent } from './one-product/one-product.component';
+import { ProductResolverService } from './one-product/product-resolver.service';
 
 
 @NgModule({
   declarations: [ProductsComponent, ProductCardComponent,
-    ProductsFilterPipe],
+    ProductsFilterPipe,
+    OneProductComponent],
   imports: [
     SharedModule,
     ProductsRouterModule
   ],
-  providers: [ProductsService]
+  providers: [ProductsService, ProductResolverService]
 })
 export class ProductsModule {
 }

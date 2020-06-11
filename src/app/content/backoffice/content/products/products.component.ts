@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { IProduct } from '../../../../custom-interceptor.service';
 import { ProductsService } from './products.service';
 import { MatCheckboxChange } from '@angular/material/checkbox/checkbox';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -16,11 +17,17 @@ export class ProductsComponent implements OnInit {
   public onlyFavorites = false;
 
   public constructor(
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private activatedRoute: ActivatedRoute,
   ) {
   }
 
   public ngOnInit(): void {
+    console.log(this.activatedRoute);
+    console.log(this.activatedRoute.snapshot.data.state);
+    this.activatedRoute.data.subscribe((d) => {
+      console.log(d.state);
+    });
     this.products$ = this.productsService.getProducts();
   }
 

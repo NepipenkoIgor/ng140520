@@ -9,7 +9,10 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./content/products/products.module').then((m) => m.ProductsModule)
+        loadChildren: () => import('./content/products/products.module').then((m) => m.ProductsModule),
+        data: {
+          state: 'products'
+        }
       }
     ]
   },
