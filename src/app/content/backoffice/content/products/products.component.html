@@ -1,0 +1,17 @@
+<mat-form-field appearance="legacy">
+  <mat-label>Search Products</mat-label>
+  <input matInput placeholder="Placeholder" (input)="searchProducts($event)">
+  <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  <mat-hint>Search product by name and price</mat-hint>
+</mat-form-field>
+<mat-checkbox (change)="toggleFavorites($event)">Show favorites</mat-checkbox>
+<mat-grid-list cols="4" rowHeight="500" *ngIf="products$ | async as products; else loader">
+  <mat-grid-tile *ngFor="let product of products | productsFilter: searchText: onlyFavorites; odd as isOdd">
+    <app-product-card [product]="product" [isOdd]="isOdd"></app-product-card>
+  </mat-grid-tile>
+</mat-grid-list>
+<ng-template #loader>
+  <div class="loader-container">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

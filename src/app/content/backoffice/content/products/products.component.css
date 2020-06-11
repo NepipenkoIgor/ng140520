@@ -1,0 +1,17 @@
+.loader-container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.loader-container mat-spinner {
+  margin: auto;
+  top: 40%;
+}
+
+mat-form-field {
+  width: 100%;
+}

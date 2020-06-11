@@ -5,8 +5,15 @@ import { BackofficeComponent } from './backoffice.component';
 export const routes: Routes = [
   {
     path: '',
-    component: BackofficeComponent
-  }
+    component: BackofficeComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./content/products/products.module').then((m) => m.ProductsModule)
+      }
+    ]
+  },
+
 ];
 
 @NgModule({

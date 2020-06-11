@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ModalService } from '../../../modal/modal.service';
-import { IProduct } from '../../../custom-interceptor.service';
+import { ModalService } from '../../../../../modal/modal.service';
+import { IProduct } from '../../../../../custom-interceptor.service';
 
 
 @Component({
