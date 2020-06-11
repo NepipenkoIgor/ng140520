@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
+
 // ReactiveX = Observer + Iterator
 @Component({
   selector: 'app-root',
@@ -6,6 +8,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(
+    private location: Location,
+  ) {
+
+  }
+
+  back() {
+    this.location.back();
+  }
+
+  forward() {
+    this.location.forward();
+  }
+
 }
 
 

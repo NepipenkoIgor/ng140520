@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) {
+  }
 
   ngOnInit(): void {
+    this.router.events.subscribe((event) => {
+      console.log(event);
+    });
+  }
+
+  public goToLogin() {
+   this.router.navigate(['/login']);
   }
 
 }
