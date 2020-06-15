@@ -21,6 +21,10 @@
             <mat-icon *ngIf="getControls(signupForm, 'emails').length > 1" (click)="removeEmail(i)">delete</mat-icon>
           </div>
         </div>
+        <div fxLayout="row">
+          <span>Male</span>
+          <app-switcher formControlName="male"></app-switcher>
+        </div>
         <div formGroupName="password">
           <div>
             <div>

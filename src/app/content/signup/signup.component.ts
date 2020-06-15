@@ -23,6 +23,7 @@ export class SignupComponent implements OnInit {
     this.signupForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(5)], this.uniqueNameValidator.bind(this)],
       emails: this.fb.array([this.fb.control('')]),
+      male: [true],
       password: this.fb.group({
         password: ['', [Validators.required, Validators.minLength(5)]],
         cpassword: ['', [Validators.required, Validators.minLength(5)]],
@@ -30,6 +31,10 @@ export class SignupComponent implements OnInit {
         validators: [this.equalFields]
       })
     });
+
+    setTimeout(() => {
+      this.signupForm.patchValue({username: 'IGORNEPIPENKO'});
+    }, 5000);
   }
 
   public signup(v: { username: string, password: { password: string, cpassword: string } }) {
@@ -50,7 +55,7 @@ export class SignupComponent implements OnInit {
     return password === cpassword
       ? null
       : {
-      equal: 'Password and Confirm Password should be the same '
+        equal: 'Password and Confirm Password should be the same '
       };
 
   }

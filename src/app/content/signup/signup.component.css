@@ -10,3 +10,7 @@ mat-card {
 .signin-content mat-form-field {
   width: 100%;
 }
+
+app-switcher {
+  padding-left: 5px;
+}
