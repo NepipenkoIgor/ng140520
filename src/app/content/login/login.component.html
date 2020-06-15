@@ -1,2 +1,21 @@
-<p>login works!</p>
-<span [routerLink]="['/signup']">Go to signup</span>
+<div class="signin-content">
+  <mat-card>
+    <mat-card-content>
+      <form #f="ngForm" (ngSubmit)="login(f.value)">
+        <p>Log In to continue</p>
+        <mat-form-field>
+          <input matInput type="text"
+                 placeholder="User name" name="username" #c="ngModel"
+                 ngModel required minlength="5" appUsernameValidator>
+          <mat-error *ngIf="c?.errors?.onlyLetters">{{c?.errors?.onlyLetters}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="password" placeholder="Password"  name="password"
+                 ngModel required minlength="5">
+        </mat-form-field>
+        <button mat-raised-button type="submit" color="primary" [disabled]="f.invalid">Log in</button>
+        <span mat-button [routerLink]="['/signup']">Go to signup</span>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
