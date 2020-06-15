@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-signup',
@@ -12,17 +14,20 @@ export class SignupComponent implements OnInit {
   public signupForm!: FormGroup;
 
   constructor(
-    private router: Router,
     private fb: FormBuilder,
+    private http: HttpClient
   ) {
   }
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(5)]],
+      username: ['', [Validators.required, Validators.minLength(5)], this.uniqueNameValidator.bind(this)],
+      emails: this.fb.array([this.fb.control('')]),
       password: this.fb.group({
         password: ['', [Validators.required, Validators.minLength(5)]],
         cpassword: ['', [Validators.required, Validators.minLength(5)]],
+      }, {
+        validators: [this.equalFields]
       })
     });
   }
@@ -31,9 +36,35 @@ export class SignupComponent implements OnInit {
     console.log(v);
   }
 
-  public goToLogin() {
 
-    this.router.navigate(['/login']);
+  public uniqueNameValidator({value}: FormControl): Observable<ValidationErrors | null> {
+    return this.http.post('/auth/checkUsername', {username: value})
+      .pipe(
+        catchError(() => {
+          return of(null);
+        })
+      );
   }
 
+  public equalFields({value: {password, cpassword}}: FormGroup): ValidationErrors | null {
+    return password === cpassword
+      ? null
+      : {
+      equal: 'Password and Confirm Password should be the same '
+      };
+
+  }
+
+
+  public getControls(control: AbstractControl, path: string): AbstractControl[] {
+    return (control.get(path) as FormArray).controls;
+  }
+
+  public addEmail() {
+    (this.signupForm.get('emails') as FormArray).push(this.fb.control(''));
+  }
+
+  public removeEmail(index: number) {
+    (this.signupForm.get('emails') as FormArray).removeAt(index);
+  }
 }

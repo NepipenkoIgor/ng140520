@@ -5,20 +5,41 @@
         <p>Sign Up to continue</p>
         <mat-form-field>
           <input matInput type="text"
-                 placeholder="User name" formControlName="username" >
-          <!--          <mat-error *ngIf="c?.errors?.onlyLetters">{{c?.errors?.onlyLetters}}</mat-error>-->
+                 placeholder="User name" formControlName="username" appUsernameValidator>
+          <mat-error *ngIf="signupForm.get('username')?.errors?.onlyLetters">
+            {{signupForm.get('username')?.errors?.onlyLetters}}</mat-error>
         </mat-form-field>
+
+        <div fxLayout="row" fxLayoutAlign="space-around center"
+             *ngFor="let controlRef of getControls(signupForm, 'emails'); index as i; first as f"
+        >
+          <mat-form-field fxFlex="90">
+            <input matInput type="text" placeholder="Email" [formControl]="controlRef" required>
+          </mat-form-field>
+          <div fxFlex="10" fxLayout="row">
+            <mat-icon *ngIf="f" (click)="addEmail()">add</mat-icon>
+            <mat-icon *ngIf="getControls(signupForm, 'emails').length > 1" (click)="removeEmail(i)">delete</mat-icon>
+          </div>
+        </div>
         <div formGroupName="password">
-          <mat-form-field>
-            <input matInput type="password" placeholder="Password" formControlName="password">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput type="password" placeholder="Confirm Password" formControlName="cpassword">
-          </mat-form-field>
+          <div>
+            <div>
+              <mat-form-field>
+                <input matInput type="password" placeholder="Password" formControlName="password">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput type="password" placeholder="Confirm Password" formControlName="cpassword">
+              </mat-form-field>
+            </div>
+          </div>
+          <div *ngIf="signupForm.get('password')?.errors?.equal">
+            {{signupForm.get('password')?.errors?.equal}}
+          </div>
         </div>
         <button mat-raised-button type="button" color="primary"
                 (click)="signup(signupForm.value)"
-                [disabled]="signupForm.invalid"  >Sign Up</button>
+                [disabled]="signupForm.invalid  || signupForm.pending">Sign Up
+        </button>
         <span mat-button [routerLink]="['/login']">Go to login</span>
       </div>
     </mat-card-content>
