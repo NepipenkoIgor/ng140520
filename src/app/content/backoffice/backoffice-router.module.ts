@@ -8,12 +8,19 @@ export const routes: Routes = [
     component: BackofficeComponent,
     children: [
       {
+        path: 'cart',
+        loadChildren: () => import('./content/cart/cart.module').then((m) => m.CartModule),
+        data: {
+          state: 'cart'
+        }
+      },
+      {
         path: '',
         loadChildren: () => import('./content/products/products.module').then((m) => m.ProductsModule),
         data: {
           state: 'products'
         }
-      }
+      },
     ]
   },
 

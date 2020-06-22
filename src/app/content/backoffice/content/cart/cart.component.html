@@ -1,0 +1,7 @@
+<app-cart-product
+  *ngFor="let product of products$ | async"
+  [product]="product"
+  (increment)="increment(product)"
+  (decrement)="decrement(product)"
+  (remove)="remove(product)"
+></app-cart-product>

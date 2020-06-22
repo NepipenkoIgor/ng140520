@@ -17,6 +17,7 @@ import { environment } from '../../environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsernameValidatorDirective } from './directives/username-validator.directive';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
+    MatBadgeModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

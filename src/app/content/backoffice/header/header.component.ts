@@ -5,6 +5,9 @@ import {
 import { MatDrawer } from '@angular/material/sidenav';
 import { IRate } from './exchange-rate/exchange-rate.component';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Store } from '@ngrx/store';
+import { IState } from '../../../store';
+import { totalProducts } from '../../../store/reducers/cart.reducer';
 
 // import { DomSanitizer } from '@angular/platform-browser';
 
@@ -26,8 +29,10 @@ export class HeaderComponent {
 
   public titleContent = this.domSanitizer.bypassSecurityTrustHtml('<h3 style="color: orange">NgCourse</h3>');
 
+  public totalCount$ = this.store.select(totalProducts)
   constructor(
     private domSanitizer: DomSanitizer,
+    private store: Store<IState>,
   ) {
   }
 

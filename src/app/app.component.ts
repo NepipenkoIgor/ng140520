@@ -11,7 +11,6 @@ export class AppComponent {
   constructor(
     private location: Location,
   ) {
-
   }
 
   back() {
