@@ -1,10 +1,10 @@
 <div fxLayout="row" fxLayoutAlign="space-around center">
   <img [src]="product.img" alt="">
   <div fxLayout="row" fxLayoutAlign="space-between center">
-    <mat-icon (click)="decrement.emit()">remove</mat-icon>
+    <mat-icon class="decrement" (click)="decrement.emit()">remove</mat-icon>
     {{product.count}}
-    <mat-icon (click)="increment.emit()">add</mat-icon>
+    <mat-icon  class="increment"  (click)="increment.emit()">add</mat-icon>
   </div>
   <p>{{product.price}}</p>
-  <mat-icon (click)="remove.emit()">delete</mat-icon>
+  <mat-icon  class="remove"  (click)="remove.emit()">delete</mat-icon>
 </div>

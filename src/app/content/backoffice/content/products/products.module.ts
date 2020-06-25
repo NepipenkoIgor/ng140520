@@ -15,7 +15,7 @@ import { ProductResolverService } from './one-product/product-resolver.service';
     OneProductComponent],
   imports: [
     SharedModule,
-    ProductsRouterModule
+    ProductsRouterModule,
   ],
   providers: [ProductsService, ProductResolverService]
 })
